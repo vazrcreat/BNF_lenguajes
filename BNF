@@ -1,3 +1,4 @@
 <Lenguaje>::= <Carrito>
 <Carrito>::= <Instrucciones> | <Carrito><Instrucciones>
-<Instrucciones>::= 
+<Instrucciones>::= <Declaracion_Variables>
+<Declaracion_Variables>::= 'definir'<identificador><tipo_dato>
