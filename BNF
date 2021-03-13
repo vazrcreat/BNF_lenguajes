@@ -1,3 +1,3 @@
 <Lenguaje>::= <Carrito>
 <Carrito>::= <Instrucciones> | <Carrito><Instrucciones>
-<Instrucciones>::= 
+<Instrucciones>::= <tomarImagen> | <ubicacion> | <Mover> 
