@@ -1,0 +1,2 @@
+<Lenguaje>::= <Carrito>
+<Carrito>::= <Instrucciones> | <Carrito><Instrucciones>
