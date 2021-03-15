@@ -1,22 +1,38 @@
 <Lenguaje>::= <Carrito>
 <Carrito>::= <Instrucciones> | <Carrito><Instrucciones>
-<Instrucciones>::= <Ciclo> | <Condicional> | <Desplazar> | <Capturar> | <Ubicacion>
+<Instrucciones>::= <Condicional> | <Mover> | <Datos>
 
-<Ciclo>::= repetir <Condicion><LineaCodigo> fin_repetir
-
-<Condicion>::= (<Booleano>)
-<Booleano>::= 1 | 0 | verdad | falso | <Operando><Operando>
-<Operando>::= <Id> | <Constante>
-<Constante>::= <Racional> | <Entero> | <Cadena>
-<Id>::= <Cadena>
-<Cadena>::= <Letra> | <Cadena><Letra> | <Cadena><Entero>
+<Datos>::= 'var'  <tipoDato> : <cadena>          
+<datoEntero> ::=  <signo><digito>|<Entero><digito>
+<signo>::="+"|"-"|"£"
+<tipoDato> ::=  'int' <datoEntero> | 'float' <datofloat> | 'String' <cadena> | 'bool' <booleano>
+<datofloat>::= <Entero>.<Entero>
+<digito> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9            
+<cadena>::= <Letras>|<cadena><Letras>|<cadena><Digito>
 <Letras>::=A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z
 
-<Entero>::= 0|1|2|3|4|5|6|7|8|9
-<Racional>::= 1/1 | 1/2 | 1/3 | 1/4 | 1/5 | 1/6 | 1/7 | 1/8 | 1/9 | 1/10 | 1/11 | 1/12 | 1/13 | 1/14 | 1/15 | 1/16
-<OperadorBool>::= == | < | > | <= | >= | !=
+<ciclo>::= 'repetir mientras '<condicional><Carrito>
+<decision>::= 'si '<condicional>' entonces'<Carrito>
+<condicional>::= '('<booleano>')'
 
-<Condicional>::= If<Id><Stop>else<Moverse>
-<Id>::= 0 | falso
-<Stop>::= <Mover>
-<Mover>::= <Retroceder><Digito>
+<booleano>::= 'true'| 'false' | <valor><operdador booleano><valor>
+<operdador booleano>::= '=='|'!='|'>='|'<='|'<'|'>'
+
+<valor>::= <Datos>|<numero>|<cadena>
+<numero>::= <datofloat>|<datoEntero>
+
+<Mover>::= <desplazar>|<retraer>|<extender>|<girar>|<inclinar>|'tomarCaptura'|'enviaUbicacion'
+<direcciones>::= 'adelante'|'atras'|'derecha'|'izquierda'
+
+<partes>::= <movimiento>|<imagen>
+<movimiento>::= <rueda>|<brazo>
+<rueda>::= 'rueda1'|'rueda2'|'rueda3'|'rueda4'|'rueda5'|'rueda6'
+<brazo>::= 'brazo1'|'brazo2'
+<retraer>::= 'retraer('<pedestal>','<Datos>')'
+<extender>::= 'extender('<pedestal>','<Datos>')'
+<girar>::= 'girar('<parte>','<Datos>','<direccion>')'
+<inclinar>::= 'inclinar('<imagen>','<Datos>','<direccion>')'
+<imagen>::= <camara>|<pedestal>
+<camara>::= 'camara'
+<pedestal>::= 'pedestal'
+<desplazar>::= 'desplazar('<Datos>','<direccion>')' | 'desplazar('<movimiento>','<Datos>','<direccion>')'
