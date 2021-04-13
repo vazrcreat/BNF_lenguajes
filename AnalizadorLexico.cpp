@@ -10,6 +10,8 @@
 #define MAX_RES 23
 #define TAM_BUFFER 100
 
+using namespace std;
+
 class Analiza{
 	char *nombreFichero; //Nombre del fichero fuente
 	FILE* entrada; //Fichero de entrada
@@ -57,7 +59,6 @@ char Analiza::siguienteToken(void){
 	
 	switch(car){
 		case' ': // Palabra reservada
-		case' ':
 		return(car);
 		}
 		
