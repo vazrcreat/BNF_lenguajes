@@ -3,8 +3,6 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <string>
-#include <ctype.h>
-#include <fstream>
 #include <iostream>
 #define MAX 650
 #define MAX_RES 23
@@ -12,22 +10,33 @@
 
 using namespace std;
 
-class Analiza{
-	char *nombreFichero; //Nombre del fichero fuente
-	FILE* entrada; //Fichero de entrada
-	int n1; //Numero de linea
-	int traza; //control de traza
-	char buffer[TAM_BUFFER]; //Buffer auxiliar de caracteres
-	int pBuffer; // Posicion en el buffer
-	
-	public:
-		Analiza(char *unNombreFichero, int una_traza=0);
-		~Analiza(void);
-		char siguienteToken(void);
-		void devuelveToken(char token);
-		int lineaActual(void){return n1;};
-		int existeTraza(void){if(traza) return 1; else return 0;};
-};
+char *PalabrasReservadas[MAX_RES] = {"si","entonces","sino","entero","decimal","logico","texto","char","mientras","haga","repita",
+"hasta","var","como","verdadero","falso","declare","inicie","termine","lea","imprima","rompa","nop"};
+char *p;
+char tokenSimbolos[MAX];
+char auxWord[MAX];	//Una variable auxiliar para guardar dos veces la palabra(token) que se vaya formando
+string tokenNumeros[MAX];
+string tokenIdentificadores[MAX];
+string tokenReservadas[MAX];
+string tokensNoValidos[MAX];
+bool esNumero=true;
+bool esIdentificador = true;
+
+//Variables auxiliares para guardar en Tokens
+int auxTR=0;
+int auxTI=0;
+int auxTN=0;
+int auxTNV=0;
+
+//Los diferentes procedimientos que se desarrollaran en el programa y llamaran en su momento desde el metodo main()
+bool verificarNumero(char palabra[]);
+bool verificarIdentificador(char palabra[]);
+bool verificarReservada(char palabra[]);
+void imprimirTokenNumeros();
+void imprimirTokenSimbolos();
+void imprimirTokenReservadas();
+void imprimirTokenIdentificadores();
+void imprimirIdentificadoresNoValidos();
 
 Analiza::Analiza(char *unNombreFichero, int una_traza){
 	entrada= fopen(unNombreFichero, "r+");
