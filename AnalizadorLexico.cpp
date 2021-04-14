@@ -46,7 +46,7 @@ int main(){
    fflush(stdin);
    gets(entrada);
 	fflush(stdin);
-   clrscr(entrada);
+   //clrscr(entrada);
    system("COLOR 0B");
 
    char palabra[MAX]; //Esta variable es muy importante, pues guardara caracter por caracter formando asi una palabra y termina de guardar cuando detecta un espacio.
@@ -125,22 +125,22 @@ int main(){
 //Inicio del desarrollo de los metodos para imprimir los resultados.
 void imprimirTokenSimbolos(){
 	puts("\n\n----------------\n|TOKENS SIMBOLOS|\n----------------");
-	for(int i=0;i<strlen(tokenSimbolos);i++){printf("%c\n",tokenSimbolos);}
+	for(int i=0;i<strlen(tokenSimbolos);i++){printf("%c\n",tokenSimbolos[i]);}
 }
 
 void imprimirTokenReservadas(){
 	puts("\n-----------------------\n|TOKENS Reservadas|\n-----------------------");
-    for(int i=0;i<auxTR;i++){printf("%d %s\n",i+1,tokenReservadas);}
+    for(int i=0;i<auxTR;i++){printf("%d %s\n",i+1,tokenReservadas[i]);}
 }
 
 void imprimirTokenIdentificadores(){
 	puts("\n-----------------------\n|TOKENS IDENTIFICADORES|\n-----------------------");
-	for(int i=0;i<auxTI;i++){printf("%d %s\n",i+1,tokenIdentificadores);}
+	for(int i=0;i<auxTI;i++){printf("%d %s\n",i+1,tokenIdentificadores[i]);}
 }
 
 void imprimirTokenNumeros(){
 	puts("\n-----------------------\n|TOKENS NUMEROS|\n-----------------------");
-    for(int i=0;i<auxTN;i++){printf("%d %s\n",i+1,tokenNumeros);}
+    for(int i=0;i<auxTN;i++){printf("%d %s\n",i+1,tokenNumeros[i]);}
 }
 
 void imprimirIdentificadoresNoValidos(){
@@ -151,7 +151,7 @@ void imprimirIdentificadoresNoValidos(){
    }else{
    	for(int i=0;i<auxTNV;i++)
 	   {
-   		printf("\t\tERROR: No es Valido el Token: %s \n",tokensNoValidos);
+   		printf("\t\tERROR: No es Valido el Token: %s \n",tokensNoValidos[i]);
    	}
    }
 }
