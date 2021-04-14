@@ -38,71 +38,15 @@ void imprimirTokenReservadas();
 void imprimirTokenIdentificadores();
 void imprimirIdentificadoresNoValidos();
 
-Analiza::Analiza(char *unNombreFichero, int una_traza){
-	entrada= fopen(unNombreFichero, "r+");
-	if((entrada==NULL)){
-		cout<<"No se puede abrir el archivo"<<endl;
-		system("pause");
-		exit(-2);
-	}
-	
-	if(una_traza) traza=1;
-	else traza =0;
-	n1=1; // se inicializa el contador de línea
-	pBuffer=0;//Se inicializa la posicion del buffer
-}
-
-Analiza::~Analiza(){
-	fclose(entrada);
-}
-
-char Analiza::siguienteToken(void){
-	char car;
-	while((car=((pBuffer>0)? buffer[--pBuffer]:getc(entrada)))!=EOF){
-		if(car==' ') continue;
-		if(car=='\n'){++n1; continue;}
-		break;
-	}
-	
-	if(traza) cout<<"ANALIZADOR LEXICO: Lee el token "<<car<<endl;
-	
-	switch(car){
-		case' ': // Palabra reservada
-		return(car);
-		}
-		
-		if(islower(car)) return(car);//variable
-		else if (isdigit(car)) return(car);//constante
-		else{
-			cout<<"Error Lexico: Token Desconocido "<<endl;
-			system("pause");
-			exit(-4);
-		}
-		return(car);
-}
-
-void Analiza::devuelveToken(char token){
-	if(pBuffer>TAM_BUFFER){
-		cout<<"Error: Desbordamiento del buffer del analizador lexico "<<endl;
-		system("pause");
-		exit(-5);
-	}else{
-		buffer[pBuffer++]=token;
-		if(existeTraza())
-		cout<<"ANALIZADOR LEXICO: Recibe en buffer el token "<<token<<endl;
-		system("pause");
-	}
-}
-
-int main(int argc, char** argv){
-	system("COLOR 0A");
+int main(){
+   system("COLOR 0A");
    char entrada[MAX];
    char *p = entrada;
    printf("Ingrese la primera linea del lenguaje: ");
    fflush(stdin);
    gets(entrada);
 	fflush(stdin);
-   //clrscr(entrada);
+   clrscr(entrada);
    system("COLOR 0B");
 
    char palabra[MAX]; //Esta variable es muy importante, pues guardara caracter por caracter formando asi una palabra y termina de guardar cuando detecta un espacio.
